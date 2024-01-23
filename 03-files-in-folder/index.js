@@ -19,8 +19,9 @@ fs.readdir(dirPath, (err, files) => {
       }
 
       console.log('File name: ', file);
-      console.log('File type: ', path.extname(file));
+      console.log('File extension: ', path.extname(file));
       console.log('File size: ', stats.size, 'bite');
+      console.log('File type:', stats.isFile() ? 'File' : 'Directory');
     });
   });
 });
