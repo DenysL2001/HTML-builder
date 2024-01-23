@@ -10,7 +10,7 @@ const rl = readline.createInterface({
 });
 
 function requestSaveText() {
-  rl.question('Write text (For exit write exit): ', (inputText) => {
+  rl.question('Hello, write text here plaese (For exit write exit): ', (inputText) => {
     if (inputText.toLowerCase() === 'exit') {
       rl.close();
     } else {
