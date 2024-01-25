@@ -14,14 +14,16 @@ fs.readdir(dirPath, (err, files) => {
     const filePath = path.join(dirPath, file);
     fs.stat(filePath, (statErr, stats) => {
       if (statErr) {
-        console.log('Error!', err);
+        console.log('Error!', statErr);
         return;
       }
 
-      console.log('File name: ', file);
-      console.log('File extension: ', path.extname(file));
-      console.log('File size: ', stats.size, 'bite');
-      console.log('File type:', stats.isFile() ? 'File' : 'Directory');
+      if (stats.isFile()) {
+        const fileNameWithoutExt = path.basename(file, path.extname(file));
+        console.log(
+          `${fileNameWithoutExt} - ${path.extname(file).slice(1)} - ${stats.size} bytes`,
+        );
+      }
     });
   });
 });
